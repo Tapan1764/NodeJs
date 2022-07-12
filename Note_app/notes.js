@@ -4,6 +4,7 @@ const { title } = require('process');
 const newNote = function(title, body){
     const notes = uploadNotes();
     notes.push({title, body});
+    fs.writeFileSync(title,body);
     fs.writeFileSync('notepad.json', JSON.stringify(notes));
 }
 
@@ -12,6 +13,10 @@ const deleteNote = function(title){
     const remaining = notes.filter(function(note){
         return note.title !== title;
     });
+    fs.unlink(title, function (err) {
+        if (err) throw err;
+        console.log('File deleted!');
+      });
     fs.writeFileSync('notepad.json', JSON.stringify(remaining));
 }
 
