@@ -1,4 +1,4 @@
-const notes = require('./notes.js')
+const notes = require('./page.js')
 const cmd1 = process.argv[2];
 const cmd2 = process.argv[3];
 const cmd3 = process.argv[4];
@@ -31,7 +31,7 @@ if(cmd1 === 'new'){
 }else if(cmd1 === 'read'){
     console.log('Reading Note');
     if(cmd2.startsWith('title')){
-        notes.readNote(cmd2.split('=')[1]);
+        page.readNote(cmd2.split('=')[1]);
     }
 }else if(cmd1 === 'edit'){
     console.log('Editing Note');

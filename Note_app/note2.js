@@ -9,13 +9,17 @@ const newNote = function(title, body){
     fs.writeFileSync('notepad.json', JSON.stringify(notes));
 }
 
-http.createServer(function (req, res) {
-    fs.readFile('notepad.txt', function(err, data) {
-      res.writeHead(200, {'Content-Type': 'text/html'});
-      res.write(data);
-      return res.end();
+const readNote = function(title){
+    const notes = uploadNotes();
+    fs.readFile(title,'utf8',(err,body)=>{
+        if(err){
+            console.log('Error reading file...');
+            return;
+        }else{
+            console.log(body);
+        }
     });
-}).listen(8000);
+}
 
 const editNote = function(title, new_text){
     const notes = uploadNotes();
