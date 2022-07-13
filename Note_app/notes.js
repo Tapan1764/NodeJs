@@ -1,4 +1,5 @@
 const fs = require('fs');
+const http = require('http');
 const { title } = require('process');
 
 const newNote = function(title, body){
@@ -6,6 +7,33 @@ const newNote = function(title, body){
     notes.push({title, body});
     fs.writeFileSync(title,body);
     fs.writeFileSync('notepad.json', JSON.stringify(notes));
+}
+
+const readNote = function(title){
+    const notes = uploadNotes();
+    fs.readFile(title,'utf8',(err,body)=>{
+        if(err){
+          console.log('Error reading file...');
+          return;
+        }
+        else console.log(body);
+    });
+}
+
+const editNote = function(title, new_text){
+    const notes = uploadNotes();
+    fs.appendFile(title, new_text, function (err) {
+        if (err) throw err;
+        console.log('Saved!');
+    });
+}
+
+const openNote = function(title,file){
+    const notes = uploadNotes();
+    fs.open(title, 'w', function (err,file) {
+        if (err) throw err;
+        console.log('Saved!');
+    });
 }
 
 const deleteNote = function(title){
@@ -18,6 +46,14 @@ const deleteNote = function(title){
         console.log('File deleted!');
       });
     fs.writeFileSync('notepad.json', JSON.stringify(remaining));
+}
+
+const renameNote = function(title, new_title){
+    const notes = uploadNotes();
+    fs.rename(title, new_title, function (err) {
+        if (err) throw err;
+        console.log('File Renamed!');
+    });
 }
 
 const allNotes = () => {
@@ -47,4 +83,4 @@ const uploadNotes = function(){
     }
 }
 
-module.exports = { newNote, deleteNote, allNotes, findNote};
+module.exports = { newNote, deleteNote, renameNote, readNote, editNote, openNote, allNotes, findNote};

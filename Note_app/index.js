@@ -23,4 +23,24 @@ if(cmd1 === 'new'){
     if(cmd2.startsWith('title')){
         notes.findNote(cmd2.split('=')[1]);
     }
+}else if(cmd1 === 'rename'){
+    console.log('Renaming Note');
+    if(cmd2.startsWith('title')){
+        notes.renameNote(cmd2.split('=')[1], cmd3.split('=')[1]);
+    }
+}else if(cmd1 === 'read'){
+    console.log('Reading Note');
+    if(cmd2.startsWith('title')){
+        notes.readNote(cmd2.split('=')[1]);
+    }
+}else if(cmd1 === 'edit'){
+    console.log('Editing Note');
+    if(cmd2.startsWith('title')){
+        notes.editNote(cmd2.split('=')[1], cmd3.split('=')[1]);
+    }
+}else if(cmd1 === 'open'){
+    console.log('Opening Note');
+    if(cmd2.startsWith('title')){
+        notes.editNote(cmd2.split('=')[1], cmd3.split('=')[1]);
+    }
 }
