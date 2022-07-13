@@ -2,7 +2,6 @@ const http = require('http');
 const fs = require('fs');
 const { title } = require('process');
 
-
 http.createServer(function (req, res) {
   // fs.open('mynewfile5.txt', 'w', function (err, file) {
   //   if (err) {
