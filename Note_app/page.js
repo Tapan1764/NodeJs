@@ -1,12 +1,11 @@
 const http = require('http');
 const fs = require('fs');
-const { title } = require('process');
 
 http.createServer(function (req, res) {
-  // fs.open('mynewfile5.txt', 'w', function (err, file) {
+  // fs.open('mynewfile6.txt', 'w', function (err, file) {
   //   if (err) {
   //         throw err;}
-  //       else{
+  //       else{  
   //         res.writeHead(200, {'Content-Type': 'text/html'});
   //         res.write('File created');
   //         return res.end();}
@@ -22,7 +21,8 @@ http.createServer(function (req, res) {
   //     return res.end();
   //   }
   // });
-  // fs.appendFile('notepad.txt', ' MU', function (err) {
+  fs.writeFileSync('newnote.txt', "Hello World");
+  // fs.appendFile('notepad4.txt', ' ICT', function (err) {
   //   if (err) {
   //     throw err;}
   //   else{
@@ -38,7 +38,7 @@ http.createServer(function (req, res) {
   //         res.write('File deleted');
   //         return res.end();}
   // });
-  // fs.rename('mynewfile5.txt', 'notepad2.txt', function (err) {
+  // fs.rename('notepad4.txt', 'newfile1.txt', function (err) {
   //   if (err) {
   //             throw err;}
   //           else{
@@ -46,5 +46,4 @@ http.createServer(function (req, res) {
   //             res.write('File renamed');
   //             return res.end();}
   // });
-  
 }).listen(8000);
